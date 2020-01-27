@@ -448,35 +448,35 @@ static int gralloc_getphys(gralloc_module_t const* module, buffer_handle_t handl
 /* There is one global instance of the module */
 static struct hw_module_methods_t gralloc_module_methods =
 {
-    open: gralloc_device_open
+    .open = gralloc_device_open;
 };
 
 struct private_module_t HAL_MODULE_INFO_SYM =
 {
-    base:
+    .base =
     {
-        common:
+        .common =
         {
-            tag: HARDWARE_MODULE_TAG,
-            version_major: 1,
-            version_minor: 0,
-            id: GRALLOC_HARDWARE_MODULE_ID,
-            name: "Graphics Memory Allocator Module",
-            author: "ARM Ltd.",
-            methods: &gralloc_module_methods,
-            dso: NULL,
+            .tag = HARDWARE_MODULE_TAG,
+            .version_major = 1,
+            .version_minor = 0,
+            .id = GRALLOC_HARDWARE_MODULE_ID,
+            .name = "Graphics Memory Allocator Module",
+            .author = "ARM Ltd.",
+            .methods = &gralloc_module_methods,
+            .dso = NULL,
         },
-        registerBuffer: gralloc_register_buffer,
-        unregisterBuffer: gralloc_unregister_buffer,
-        lock: gralloc_lock,
-        unlock: gralloc_unlock,
-        getphys: gralloc_getphys,
-        perform: NULL,
+        .registerBuffer = gralloc_register_buffer,
+        .unregisterBuffer = gralloc_unregister_buffer,
+        .lock = gralloc_lock,
+        .unlock = gralloc_unlock,
+        .getphys = gralloc_getphys,
+        .perform = NULL,
     },
-    framebuffer: NULL,
-    flags: 0,
-    numBuffers: 0,
-    bufferMask: 0,
-    lock: PTHREAD_MUTEX_INITIALIZER,
-    currentBuffer: NULL,
+    .framebuffer = NULL,
+    .flags = 0,
+    .numBuffers = 0,
+    .bufferMask = 0,
+    .lock = PTHREAD_MUTEX_INITIALIZER,
+    .currentBuffer = NULL,
 };
