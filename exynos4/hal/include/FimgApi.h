@@ -18,10 +18,15 @@
 **
 */
 
+#pragma clang diagnostic ignored "-Wunused-parameter"
+#pragma clang diagnostic ignored "-Wmismatched-tags"
+#pragma clang diagnostic ignored "-Wunused-variable"
+
 #ifndef FIMG_API_H
 #define FIMG_API_H
 
 #include <utils/Log.h>
+#include <pthread.h>
 #include "sec_g2d_4x.h"
 
 #undef REAL_DEBUG
@@ -149,6 +154,11 @@ int stretchFimgApi(struct fimg2d_blit *cmd);
 extern "C"
 #endif
 int SyncFimgApi(void);
+
+#ifdef __cplusplus
+extern "C"
+#endif
+int FimgApiCheckBoostup(Fimg *curr, Fimg *prev);
 
 void printDataBlit(char *title, struct fimg2d_blit *cmd);
 void printDataBlitRotate(int rotate);
